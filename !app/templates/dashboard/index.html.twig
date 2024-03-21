@@ -22,6 +22,7 @@
                 <td>{{ email.recipient }}</td>
                 <td>{{ email.content }}</td>
                 <td>{{ email.date|date('Y-m-d H:i:s') }}</td>
+                <td><a href="{{ path('edit_email', {'id': email.id}) }}"></a></td>
             </tr>
         {% endfor %}
         </tbody>

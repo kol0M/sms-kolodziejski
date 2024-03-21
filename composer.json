@@ -1,0 +1,14 @@
+{
+    "require": {
+        "easycorp/easyadmin-bundle": "^4.9",
+        "symfony/security-bundle": "^6.4"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.56"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
