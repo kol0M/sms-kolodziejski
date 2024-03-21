@@ -5,3 +5,19 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+# config/routes.yaml
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+register:
+    path: /register
+    controller: App\Controller\SecurityController::register
+
+dashboard:
+    path: /admin
+    controller: App\Controller\DashboardController::index

@@ -19,6 +19,13 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    App\Command\RetrieveEmailsCommand:
+        tags: [ console.command ]
+
+    App\Controller\DashboardController:
+        arguments:
+            $emailRepository: '@App\Repository\EmailRepository'
+            $kernel: '@kernel'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

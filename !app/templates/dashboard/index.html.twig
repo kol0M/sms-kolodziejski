@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emails/SMS Table{% endblock %}
+
+{% block body %}
+    <h1>Emails/SMS Table</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><a href="#" class="sort" data-sort="id">ID</a></th>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>content</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for email in emails %}
+            <tr>
+                <td>{{ email.id }}</td>
+                <td>{{ email.sender }}</td>
+                <td>{{ email.recipient }}</td>
+                <td>{{ email.content }}</td>
+                <td>{{ email.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br><a href="{{ path('dashboard_import') }}" class="btn btn-primary">Import Emails/SMS</a>
+
+    <script>
+        document.querySelectorAll('.sort').forEach(function(header) {
+            header.addEventListener('click', function() {
+                let sortField = this.getAttribute('data-sort');
+                let currentUrl = new URL(window.location);
+                let sortOrder = currentUrl.searchParams.get('sortOrder') || 'ASC';
+
+                if (sortField === currentUrl.searchParams.get('sortBy')) {
+                    sortOrder = (sortOrder === 'ASC') ? 'DESC' : 'ASC';
+                }
+
+                currentUrl.searchParams.set('sortBy', sortField);
+                currentUrl.searchParams.set('sortOrder', sortOrder);
+                window.location.href = currentUrl.toString();
+            });
+        });
+    </script>
+{% endblock %}
